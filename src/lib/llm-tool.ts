@@ -11,7 +11,8 @@ const getUserDataTool = tool(
     async ({userId}, options): Promise<string> => {
         const currentUserId = options?.metadata?.currentUserId as string;
 
-        const res = await fetch('http://localhost:4000/api/user/' + userId);
+        //const res = await fetch('http://localhost:4000/api/user/' + userId);
+        const res = await fetch(`${process.env.APP_URL}/api/user/` + userId);
         if (res.status === 404){
             return JSON.stringify({ error: "ไม่พบข้อมูลพนักงาน" });
         }
