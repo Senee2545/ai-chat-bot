@@ -13,7 +13,7 @@ const embeddings = new OpenAIEmbeddings({
 
 export async function GET() {
   try {
-    const text = "พนักงานใหม่";  
+    const text = "พนักงานใหม่123";  
     const vector = await embeddings.embedQuery(text);
     return NextResponse.json({ vector });
   } catch (e: any) {

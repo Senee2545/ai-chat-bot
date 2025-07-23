@@ -8,7 +8,7 @@ import { NextResponse } from "next/server";
 import { OpenAIEmbeddings } from "@langchain/openai";
 
 export async function GET(){
-    const loader = new PDFLoader("./data/pdf/DOA64.pdf");
+    const loader = new PDFLoader("./data/pdf/[AI Chatbot] PlainTextDOA2.pdf");
     const docs = await loader.load();
 
     const splitter = new RecursiveCharacterTextSplitter({
