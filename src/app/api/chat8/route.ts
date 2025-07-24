@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
     const chainWithHistory = new RunnableWithMessageHistory({
         runnable: chain,
         getMessageHistory: (sessionId) => getHistory(sessionId),
-        inputMessagesKey: "input",  // ต้องตรงกับ {input}
+        inputMessagesKey: "input",  // ต้องตรงกับ {input} //
         historyMessagesKey: "history",
     });
 
