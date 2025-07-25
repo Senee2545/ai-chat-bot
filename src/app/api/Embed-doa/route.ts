@@ -1,4 +1,4 @@
-// http://localhost:4000/api/rag-index-pdf-doa
+// http://localhost:3000/api/Embed-doa
 
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
@@ -19,19 +19,23 @@ export async function GET(){
 
     const chunks = await splitter.splitDocuments(docs);
 
+      
+
+    
     const supabase = await createClient();
 
     const vectorStore = new SupabaseVectorStore(
         new OpenAIEmbeddings({ model: 'text-embedding-3-small' }),
         {
             client: supabase,
-            tableName: 'documents',
+            tableName: 'documents_doa',
         }
     );
 
     await vectorStore.addDocuments(chunks);
 
-    return NextResponse.json({ message: `newfont.pdf ทำ Indexed ทั้งหมด ${chunks.length} chunks (1536)` });
+    return NextResponse.json({ message: `newfont.pdf ทำ Indexed ทั้งหมด ${chunks.length} chunks (1536)`, documents: chunks });
+
     
 }
 

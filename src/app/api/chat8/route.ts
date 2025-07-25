@@ -93,6 +93,8 @@ export async function POST(req: NextRequest) {
 
     // RAG: Retrieve context
     const docs = (await getRetriver()).invoke(lastUserMessage);
+    
+    console.log("Retrieved documents:", await docs);
     const ragContextRaw = (await docs).map((document) => document.pageContent).join("\n\n");
 
     // ป้องกัน { } ใน context
